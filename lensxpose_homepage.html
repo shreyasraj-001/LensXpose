@@ -1,0 +1,682 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --noir:#050505;--graphite:#121212;--gold:#D9A441;--ivory:#F7F5F2;--mist:#6B7280;
+  --gold-soft:rgba(217,164,65,0.12);--gold-border:rgba(217,164,65,0.25);
+  --white-border:rgba(255,255,255,0.06);--white-faint:rgba(255,255,255,0.03);
+}
+.lx{font-family:'Outfit',sans-serif;background:var(--noir);color:var(--ivory);line-height:1.6;overflow-x:hidden}
+.serif{font-family:'Cormorant Garamond',serif}
+.gold{color:var(--gold)}
+.mist{color:var(--mist)}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 48px;
+  background:rgba(5,5,5,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--white-border);
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:-0.04em;color:var(--ivory)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mist);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--ivory)}
+.nav-cta{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding:10px 24px;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all 0.3s;font-family:'Outfit',sans-serif}
+.nav-cta:hover{background:var(--gold);color:var(--noir)}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:0 0 80px 0;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 30%, rgba(217,164,65,0.035) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 70%, rgba(18,18,22,0.8) 0%, transparent 70%),
+    linear-gradient(160deg, #0A0A0A 0%, #050505 50%, #080810 100%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.006) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.006) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+.hero-film-strip{
+  position:absolute;right:0;top:0;bottom:0;width:45%;
+  display:grid;grid-template-rows:repeat(3,1fr);gap:2px;
+  opacity:0.55;
+}
+.film-cell{
+  background:var(--graphite);
+  border-left:2px solid rgba(217,164,65,0.15);
+  position:relative;overflow:hidden;
+}
+.film-cell::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(217,164,65,0.04) 0%,transparent 50%,rgba(0,0,0,0.3) 100%);
+}
+.film-cell:nth-child(1){background:linear-gradient(135deg,#1a1208 0%,#0d0d0d 100%)}
+.film-cell:nth-child(2){background:linear-gradient(135deg,#0d1219 0%,#080808 100%)}
+.film-cell:nth-child(3){background:linear-gradient(135deg,#12100d 0%,#0a0a0a 100%)}
+.film-label{position:absolute;bottom:16px;left:16px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(217,164,65,0.5)}
+
+.hero-content{position:relative;z-index:10;padding:0 48px;max-width:700px}
+.hero-eyebrow{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(60px,9vw,108px);font-weight:300;line-height:0.92;letter-spacing:-0.03em;color:var(--ivory);margin-bottom:32px}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:15px;font-weight:300;color:var(--mist);max-width:440px;line-height:1.7;margin-bottom:44px}
+.hero-actions{display:flex;align-items:center;gap:24px}
+.btn-primary{
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  padding:16px 36px;background:var(--gold);color:var(--noir);
+  border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;
+  transition:all 0.3s;
+}
+.btn-primary:hover{background:#E8B145;transform:translateY(-1px)}
+.btn-ghost{
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  padding:16px 36px;background:transparent;color:var(--ivory);
+  border:1px solid var(--white-border);cursor:pointer;font-family:'Outfit',sans-serif;
+  transition:all 0.3s;display:flex;align-items:center;gap:10px;
+}
+.btn-ghost:hover{border-color:var(--gold-border);color:var(--gold)}
+.play-icon{width:18px;height:18px;border:1px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.play-icon::after{content:'';border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;margin-left:2px}
+
+.hero-stats{
+  position:absolute;bottom:80px;right:48px;z-index:10;
+  display:flex;gap:40px;
+}
+.stat-item{text-align:right}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--ivory);line-height:1}
+.stat-num span{color:var(--gold);font-size:24px}
+.stat-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);margin-top:4px}
+
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.scroll-text{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--mist)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+
+/* SECTION COMMON */
+.section{padding:120px 48px}
+.section-inner{max-width:1200px;margin:0 auto}
+.eyebrow{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;line-height:1.05;letter-spacing:-0.02em}
+
+/* WORK SECTION */
+.work-grid{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:2px}
+.work-card{position:relative;overflow:hidden;cursor:pointer;background:var(--graphite)}
+.work-card:nth-child(1){grid-row:span 2;min-height:640px}
+.work-card:nth-child(2),.work-card:nth-child(3){min-height:316px}
+.work-card-bg{
+  position:absolute;inset:0;
+  transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.work-card:hover .work-card-bg{transform:scale(1.04)}
+.work-card:nth-child(1) .work-card-bg{background:linear-gradient(145deg,#1a1208 0%,#0d0806 50%,#050505 100%)}
+.work-card:nth-child(2) .work-card-bg{background:linear-gradient(145deg,#0d1219 0%,#080d12 50%,#050505 100%)}
+.work-card:nth-child(3) .work-card-bg{background:linear-gradient(145deg,#12100d 0%,#0a0a08 50%,#050505 100%)}
+.work-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.1) 50%,transparent 100%)}
+.work-card-content{position:absolute;bottom:0;left:0;right:0;padding:32px}
+.work-tag{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.work-title{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,30px);font-weight:300;color:var(--ivory);line-height:1.2}
+.work-view{
+  display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mist);
+  opacity:0;transform:translateY(8px);transition:all 0.4s;
+}
+.work-card:hover .work-view{opacity:1;transform:translateY(0);color:var(--gold)}
+.work-view::after{content:'→'}
+.film-grain{
+  position:absolute;inset:0;opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+
+/* SEGMENTS */
+.segments{background:var(--graphite);border-top:1px solid var(--white-border);border-bottom:1px solid var(--white-border)}
+.segments-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+.segments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--white-border)}
+.segment-card{
+  background:var(--graphite);padding:48px 40px;
+  transition:background 0.4s;cursor:pointer;position:relative;overflow:hidden;
+}
+.segment-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.segment-card:hover{background:#141414}
+.segment-card:hover::after{transform:scaleX(1)}
+.segment-icon{
+  width:48px;height:48px;border:1px solid var(--gold-border);
+  display:flex;align-items:center;justify-content:center;margin-bottom:28px;
+  font-size:20px;
+}
+.segment-num{position:absolute;top:40px;right:40px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:rgba(255,255,255,0.03);line-height:1}
+.segment-label{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.segment-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--ivory);margin-bottom:16px}
+.segment-desc{font-size:13px;font-weight:300;color:var(--mist);line-height:1.7;margin-bottom:28px}
+.segment-services{display:flex;flex-wrap:wrap;gap:6px}
+.service-pill{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--white-border);color:var(--mist)}
+
+/* PHILOSOPHY */
+.philosophy{position:relative;overflow:hidden;padding:160px 48px}
+.philosophy-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(217,164,65,0.04) 0%,transparent 70%);
+}
+.philosophy-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.philosophy-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4.5vw,56px);
+  font-weight:300;font-style:italic;
+  line-height:1.2;letter-spacing:-0.01em;
+  color:var(--ivory);margin-bottom:40px;
+}
+.philosophy-quote em{color:var(--gold);font-style:normal}
+.philosophy-attr{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--mist)}
+
+/* PROCESS */
+.process-steps{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--white-border)}
+.process-step{background:var(--noir);padding:40px 32px;position:relative}
+.process-step-line{
+  position:absolute;top:64px;right:0;
+  width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);
+}
+.process-step:last-child .process-step-line{display:none}
+.process-label{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.process-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ivory);margin-bottom:12px}
+.process-desc{font-size:12px;font-weight:300;color:var(--mist);line-height:1.7}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--graphite)}
+.testimonial-grid{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--white-border)}
+.testimonial-card{background:var(--graphite);padding:48px 40px;transition:background 0.3s}
+.testimonial-card:hover{background:#131313}
+.testimonial-stars{display:flex;gap:4px;margin-bottom:24px}
+.star{color:var(--gold);font-size:12px}
+.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:var(--ivory);line-height:1.5;margin-bottom:28px}
+.testimonial-divider{width:32px;height:1px;background:var(--gold-border);margin-bottom:20px}
+.testimonial-name{font-size:13px;font-weight:500;color:var(--ivory)}
+.testimonial-role{font-size:11px;color:var(--mist);margin-top:2px}
+.testimonial-tag{
+  display:inline-block;margin-top:12px;
+  font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  padding:4px 10px;border:1px solid var(--gold-border);color:var(--gold);
+}
+
+/* CTA SECTION */
+.cta-section{
+  padding:160px 48px;text-align:center;
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--white-border);
+}
+.cta-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 100%,rgba(217,164,65,0.06) 0%,transparent 60%);
+}
+.cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,72px);font-weight:300;color:var(--ivory);line-height:1;margin-bottom:24px}
+.cta-title em{font-style:italic;color:var(--gold)}
+.cta-sub{font-size:14px;font-weight:300;color:var(--mist);margin-bottom:48px;line-height:1.7}
+.cta-actions{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap}
+.whatsapp-btn{
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  padding:16px 32px;border:1px solid rgba(37,211,102,0.35);
+  color:rgba(37,211,102,0.8);background:transparent;cursor:pointer;
+  font-family:'Outfit',sans-serif;transition:all 0.3s;
+}
+.whatsapp-btn:hover{border-color:rgba(37,211,102,0.7);color:#25D366}
+.wa-icon{width:16px;height:16px;fill:currentColor}
+
+/* FOOTER */
+.footer{
+  padding:64px 48px 40px;
+  border-top:1px solid var(--white-border);
+}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;letter-spacing:-0.04em;color:var(--ivory)}
+.footer-logo span{color:var(--gold)}
+.footer-tagline{font-size:12px;color:var(--mist);margin-top:6px;letter-spacing:0.06em}
+.footer-nav{display:flex;gap:56px}
+.footer-col h4{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:13px;font-weight:300;color:var(--mist);text-decoration:none;transition:color 0.3s}
+.footer-col a:hover{color:var(--ivory)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--white-border)}
+.footer-copy{font-size:11px;color:rgba(107,114,128,0.5);letter-spacing:0.1em}
+.footer-socials{display:flex;gap:20px}
+.social-link{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mist);text-decoration:none;transition:color 0.3s}
+.social-link:hover{color:var(--gold)}
+
+/* REEL SHOWCASE */
+.reel-strip{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.reel-card{
+  aspect-ratio:9/16;background:var(--graphite);position:relative;overflow:hidden;cursor:pointer;
+}
+.reel-card-bg{
+  position:absolute;inset:0;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  display:flex;align-items:center;justify-content:center;
+}
+.reel-card:hover .reel-card-bg{transform:scale(1.06)}
+.reel-play{
+  width:48px;height:48px;border:1px solid rgba(255,255,255,0.3);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);
+}
+.reel-card:hover .reel-play{border-color:var(--gold);background:rgba(217,164,65,0.15)}
+.reel-play::after{content:'';border-left:14px solid var(--ivory);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:3px}
+.reel-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%)}
+.reel-info{position:absolute;bottom:16px;left:16px;right:16px}
+.reel-platform{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.reel-title{font-size:12px;font-weight:300;color:var(--ivory);line-height:1.4}
+.reel-card:nth-child(1) .reel-card-bg{background:linear-gradient(170deg,#1a1208,#050505)}
+.reel-card:nth-child(2) .reel-card-bg{background:linear-gradient(170deg,#0d1219,#050505)}
+.reel-card:nth-child(3) .reel-card-bg{background:linear-gradient(170deg,#12100d,#050505)}
+.reel-card:nth-child(4) .reel-card-bg{background:linear-gradient(170deg,#0d1912,#050505)}
+
+/* CLIENT LOGOS */
+.logos-section{padding:80px 48px;border-bottom:1px solid var(--white-border)}
+.logos-inner{max-width:1200px;margin:0 auto}
+.logos-label{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--mist);text-align:center;margin-bottom:40px}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:56px;flex-wrap:wrap}
+.logo-item{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:rgba(107,114,128,0.35);letter-spacing:0.04em;transition:color 0.3s;cursor:default}
+.logo-item:hover{color:rgba(107,114,128,0.65)}
+</style>
+
+<div class="lx">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">LensXpose<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Reels</a></li>
+    <li><a href="#">Journal</a></li>
+  </ul>
+  <button class="nav-cta">Start a Project</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="film-grain"></div>
+
+  <div class="hero-film-strip">
+    <div class="film-cell">
+      <div class="film-label">Wedding · 2024</div>
+    </div>
+    <div class="film-cell">
+      <div class="film-label">Corporate · Brand Film</div>
+    </div>
+    <div class="film-cell">
+      <div class="film-label">Creator · Content</div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Visual Storytelling Studio · India</div>
+    <h1 class="hero-h1">
+      Stories<br><em>Beyond</em><br>Frames.
+    </h1>
+    <p class="hero-sub">We don't capture photographs. We preserve the meaning behind moments — for the brands, creators, and families who refuse to settle for ordinary.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Explore Our Work</button>
+      <button class="btn-ghost">
+        <span class="play-icon"></span>
+        Watch Showreel
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">340<span>+</span></div>
+      <div class="stat-label">Stories Told</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12<span>+</span></div>
+      <div class="stat-label">Industries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8<span>yr</span></div>
+      <div class="stat-label">Of Excellence</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span class="scroll-text">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<section class="logos-section">
+  <div class="logos-inner">
+    <p class="logos-label">Trusted by brands across India</p>
+    <div class="logos-row">
+      <span class="logo-item">Novatech</span>
+      <span class="logo-item">Celestia Hotels</span>
+      <span class="logo-item">Meridian Brands</span>
+      <span class="logo-item">Apex Studios</span>
+      <span class="logo-item">Veritas Corp</span>
+      <span class="logo-item">Luminary</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORK -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Featured Work</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <h2 class="section-title serif">Where stories<br>find their form.</h2>
+      <button class="btn-ghost" style="flex-shrink:0">View All Projects</button>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-card-bg"></div>
+        <div class="film-grain"></div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <span class="work-tag">Wedding · Cinematic Film</span>
+          <div class="work-title">Arjun & Priya — A Love Preserved in Light</div>
+          <div class="work-view">View Project</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg"></div>
+        <div class="film-grain"></div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <span class="work-tag">Corporate · Brand Film</span>
+          <div class="work-title">Novatech — Redefining the Brand Voice</div>
+          <div class="work-view">View Project</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg"></div>
+        <div class="film-grain"></div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <span class="work-tag">Creator · Personal Brand</span>
+          <div class="work-title">Riya Kapoor — Content That Commands Attention</div>
+          <div class="work-view">View Project</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT SEGMENTS -->
+<section class="segments section">
+  <div class="section-inner">
+    <div class="segments-header">
+      <div>
+        <div class="eyebrow">Who We Serve</div>
+        <h2 class="section-title serif">Every story<br>deserves a<br><em style="color:var(--gold)">master narrator.</em></h2>
+      </div>
+      <p class="mist" style="max-width:280px;font-size:13px;font-weight:300;line-height:1.7;text-align:right">Three worlds. One commitment — to make every frame feel irreplaceable.</p>
+    </div>
+    <div class="segments-grid">
+      <div class="segment-card">
+        <div class="segment-icon">🏢</div>
+        <div class="segment-num">01</div>
+        <div class="segment-label">Segment One</div>
+        <div class="segment-name serif">Corporate &<br>Brands</div>
+        <div class="segment-desc">Build market authority through strategic visual storytelling that speaks the language of your industry.</div>
+        <div class="segment-services">
+          <span class="service-pill">Brand Films</span>
+          <span class="service-pill">Product Shoots</span>
+          <span class="service-pill">Employer Branding</span>
+          <span class="service-pill">Event Coverage</span>
+        </div>
+      </div>
+      <div class="segment-card">
+        <div class="segment-icon">✨</div>
+        <div class="segment-num">02</div>
+        <div class="segment-label">Segment Two</div>
+        <div class="segment-name serif">Creators &<br>Influencers</div>
+        <div class="segment-desc">Elevate your personal brand from content creator to cultural voice with cinematic production values.</div>
+        <div class="segment-services">
+          <span class="service-pill">Reels Production</span>
+          <span class="service-pill">YouTube Shorts</span>
+          <span class="service-pill">Brand Shoots</span>
+          <span class="service-pill">Social Content</span>
+        </div>
+      </div>
+      <div class="segment-card">
+        <div class="segment-icon">💍</div>
+        <div class="segment-num">03</div>
+        <div class="segment-label">Segment Three</div>
+        <div class="segment-name serif">Weddings &<br>Celebrations</div>
+        <div class="segment-desc">Entrust your most irreplaceable day to a team that understands that some moments can only be lived once.</div>
+        <div class="segment-services">
+          <span class="service-pill">Cinematic Films</span>
+          <span class="service-pill">Drone Coverage</span>
+          <span class="service-pill">Pre-Wedding</span>
+          <span class="service-pill">Photography</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY BREAK -->
+<section class="philosophy">
+  <div class="philosophy-bg"></div>
+  <div class="philosophy-inner">
+    <p class="philosophy-quote">"Most photographers capture <em>moments.</em> LENSXPOSE captures <em>meaning.</em>"</p>
+    <div style="width:40px;height:1px;background:var(--gold-border);margin:0 auto 16px"></div>
+    <p class="philosophy-attr">The LENSXPOSE Difference</p>
+  </div>
+</section>
+
+<!-- REELS SHOWCASE -->
+<section class="section" style="padding-top:0;background:var(--noir)">
+  <div class="section-inner">
+    <div class="eyebrow">Creator Content</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0">
+      <h2 class="section-title serif">Content that<br>stops the scroll.</h2>
+      <button class="btn-ghost" style="flex-shrink:0">View All Reels</button>
+    </div>
+    <div class="reel-strip">
+      <div class="reel-card">
+        <div class="reel-card-bg"><div class="reel-play"></div></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-info">
+          <div class="reel-platform">Instagram Reel</div>
+          <div class="reel-title">Lifestyle × Fashion — Riya Kapoor</div>
+        </div>
+      </div>
+      <div class="reel-card">
+        <div class="reel-card-bg"><div class="reel-play"></div></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-info">
+          <div class="reel-platform">YouTube Short</div>
+          <div class="reel-title">Product Launch — Meridian Essentials</div>
+        </div>
+      </div>
+      <div class="reel-card">
+        <div class="reel-card-bg"><div class="reel-play"></div></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-info">
+          <div class="reel-platform">Instagram Reel</div>
+          <div class="reel-title">Travel Diary — @wanderwitharjun</div>
+        </div>
+      </div>
+      <div class="reel-card">
+        <div class="reel-card-bg"><div class="reel-play"></div></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-info">
+          <div class="reel-platform">Brand Film</div>
+          <div class="reel-title">Celestia Hotels — A Stay Story</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">How We Work</div>
+    <h2 class="section-title serif" style="margin-bottom:0">A process as intentional<br>as the <em style="color:var(--gold)">story itself.</em></h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-line"></div>
+        <div class="process-label">Discovery</div>
+        <div class="process-title serif">Understand the story</div>
+        <p class="process-desc">We begin not with a camera, but with a conversation — understanding your world, your audience, and the meaning you want to preserve.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-line"></div>
+        <div class="process-label">Creative Direction</div>
+        <div class="process-title serif">Craft the vision</div>
+        <p class="process-desc">From shot lists to mood boards, every production begins with a deliberate creative blueprint built around your unique narrative.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-line"></div>
+        <div class="process-label">Production</div>
+        <div class="process-title serif">Execute with mastery</div>
+        <p class="process-desc">On-set, we are invisible. Our team moves with purpose so that the story unfolds naturally — never directed, always true.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-label">Delivery</div>
+        <div class="process-title serif">Deliver a legacy</div>
+        <p class="process-desc">Final deliverables are refined to the last detail — color-graded, sequenced, and packaged to live forever across every platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials section">
+  <div class="section-inner">
+    <div class="eyebrow">Client Words</div>
+    <h2 class="section-title serif">The story,<br>from those who lived it.</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-quote">"LENSXPOSE didn't just film our wedding. They understood what it meant — and gave us something we'll spend a lifetime watching."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-name">Arjun & Priya Mehta</div>
+        <div class="testimonial-role">Destination Wedding — Udaipur, 2024</div>
+        <span class="testimonial-tag">Wedding Film</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-quote">"Our brand film tripled our website engagement. The team understood our business before they ever picked up a camera."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-name">Kiran Shah</div>
+        <div class="testimonial-role">Founder, Novatech Solutions</div>
+        <span class="testimonial-tag">Corporate Film</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-quote">"My content went from 'nice' to magnetic. LENSXPOSE showed me what my brand could actually look like — then built it."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-name">Riya Kapoor</div>
+        <div class="testimonial-role">Lifestyle Influencer · 820K Followers</div>
+        <span class="testimonial-tag">Creator Content</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-quote">"Every frame from our product campaign told a story. Our conversion rate didn't just improve — it transformed."</p>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-name">Deepa Nair</div>
+        <div class="testimonial-role">CMO, Meridian Consumer Brands</div>
+        <span class="testimonial-tag">Commercial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="eyebrow" style="justify-content:center">Begin Your Story</div>
+    <h2 class="cta-title serif">Your story<br>deserves <em>more</em><br>than a camera.</h2>
+    <p class="cta-sub">Let's build something that lives beyond a gallery. Start with a conversation — no pressure, just possibility.</p>
+    <div class="cta-actions">
+      <button class="btn-primary">Book a Free Consultation</button>
+      <button class="whatsapp-btn">
+        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">LensXpose<span>.</span></div>
+        <p class="footer-tagline">Transform Moments Into Legacies.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Work</h4>
+          <ul>
+            <li><a href="#">Weddings</a></li>
+            <li><a href="#">Corporate</a></li>
+            <li><a href="#">Creators</a></li>
+            <li><a href="#">Commercial</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Photography</a></li>
+            <li><a href="#">Cinematography</a></li>
+            <li><a href="#">Brand Films</a></li>
+            <li><a href="#">Reels & Shorts</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Process</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© LENSXPOSE · Photography, Cinematography & Creative Production · India</p>
+      <div class="footer-socials">
+        <a class="social-link" href="#">Instagram</a>
+        <a class="social-link" href="#">YouTube</a>
+        <a class="social-link" href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>

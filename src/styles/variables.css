@@ -1,0 +1,43 @@
+:root {
+  --obsidian-noir: #050505;
+  --graphite-studio: #121212;
+  --luxury-gold: #D9A441;
+  --warm-ivory: #F7F5F2;
+  --accent-white: #FFFFFF;
+  --platinum-mist: #6B7280;
+
+  /* WCAG status & shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-lg: 0 20px 48px rgba(0,0,0,0.65);
+  --shadow-gold: 0 12px 32px rgba(217,164,65,0.12);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--obsidian-noir);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--graphite-studio);
+  border-radius: 10px;
+  border: 2px solid var(--obsidian-noir);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--luxury-gold);
+}
+
+/* Reset / Base utility classes */
+html, body {
+  background-color: var(--obsidian-noir);
+  color: var(--warm-ivory);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
