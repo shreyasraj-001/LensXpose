@@ -35,13 +35,13 @@ export function InteractiveElements() {
               </div>
               <div>
                 <p className="font-body text-[10px] text-[#6B7280] uppercase tracking-widest mb-3">Hover (End Frame)</p>
-                <PrimaryButton forceHover>
+                <PrimaryButton>
                   Start Your Story
                 </PrimaryButton>
               </div>
               <div>
                 <p className="font-body text-[10px] text-[#6B7280] uppercase tracking-widest mb-3">Active / Click</p>
-                <PrimaryButton forceHover forceActive>
+                <PrimaryButton>
                   Start Your Story
                 </PrimaryButton>
               </div>
@@ -69,19 +69,19 @@ export function InteractiveElements() {
               </div>
               <div>
                 <p className="font-body text-[10px] text-[#6B7280] uppercase tracking-widest mb-3">Hover (End Frame)</p>
-                <SecondaryButton forceHover>
+                <SecondaryButton>
                   Explore Gallery
                 </SecondaryButton>
               </div>
               <div>
                 <p className="font-body text-[10px] text-[#6B7280] uppercase tracking-widest mb-3">Active / Click</p>
-                <SecondaryButton forceHover forceActive>
+                <SecondaryButton>
                   Explore Gallery
                 </SecondaryButton>
               </div>
               <div>
                 <p className="font-body text-[10px] text-[#6B7280] uppercase tracking-widest mb-3">Ghost (Neutral)</p>
-                <SecondaryButton isGhost>
+                <SecondaryButton>
                   Learn More
                 </SecondaryButton>
               </div>
@@ -103,7 +103,7 @@ export function InteractiveElements() {
               </div>
               <div>
                 <p className="font-body text-[10px] text-[#6B7280] uppercase tracking-widest mb-4">Hover Text Link</p>
-                <TertiaryButton forceHover>
+                <TertiaryButton>
                   View Case Study
                 </TertiaryButton>
               </div>
