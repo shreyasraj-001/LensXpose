@@ -6,7 +6,7 @@ export function Hero() {
       {/* Background Layers */}
       <div className="hero-bg-layer" />
       <div className="absolute inset-0 grid-overlay opacity-60" />
-      <div className="film-grain" />
+      {/* <div className="film-grain" /> */}
 
       {/* Film Strip — Right Side */}
       <div className="film-strip">
@@ -31,7 +31,7 @@ export function Hero() {
       <div className="relative z-10 px-6 md:px-12 pb-20 max-w-[700px]">
         {/* Eyebrow */}
         <div className="flex items-center gap-3 mb-7">
-          <div className="w-8 h-px bg-[#D9A441]" />
+          <div className="w-[6px] h-[6px] bg-[#D9A441] rounded-full" />
           <span className="font-body text-[10px] tracking-[0.28em] uppercase text-[#D9A441]">
             Visual Storytelling Studio · India
           </span>
@@ -40,12 +40,16 @@ export function Hero() {
         {/* Headline */}
         <h1 className="font-display text-[clamp(60px,9vw,108px)] font-light leading-[0.92] tracking-[-0.03em] text-[#F7F5F2] mb-8">
           Stories<br />
-          <em className="text-[#D9A441]">Beyond</em><br />
+          <em style={{
+            fontStyle: 'italic',
+            color: 'transparent',
+            WebkitTextStroke: '1px rgba(217, 164, 65, 0.6)'
+          }}>Beyond</em><br />
           Frames.
         </h1>
 
         {/* Subtitle */}
-        <p className="font-body text-[15px] font-light text-[#6B7280] max-w-[440px] leading-[1.7] mb-11">
+        <p className="font-body text-[15px] font-light text-[#6B7280] max-w-[440px] leading-[1.7] mb-11" style={{ color: 'var(--mist)', fontSize: '14px', fontWeight: 300, lineHeight: 1.8, maxWidth: '380px', marginBottom: '52px', borderLeft: '1px solid rgba(217,164,65,0.25)', paddingLeft: '20px' }}>
           We don't capture photographs. We preserve the meaning behind moments — for the brands, creators, and families who refuse to settle for ordinary.
         </p>
 
@@ -61,29 +65,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Stats — Bottom Right */}
-      <div className="absolute bottom-20 right-6 md:right-12 z-10 flex gap-10">
-        {[
-          { value: '340', suffix: '+', label: 'Stories Told' },
-          { value: '12', suffix: '+', label: 'Industries' },
-          { value: '8', suffix: 'yr', label: 'Of Excellence' },
-        ].map(stat => (
-          <div key={stat.label} className="text-right">
-            <div className="font-display text-[40px] font-light text-[#F7F5F2] leading-none">
-              {stat.value}<span className="text-[#D9A441] text-2xl">{stat.suffix}</span>
-            </div>
-            <div className="font-body text-[10px] tracking-[0.2em] uppercase text-[#6B7280] mt-1">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="scroll-indicator flex flex-col items-center gap-2">
-        <span className="font-body text-[9px] tracking-[0.28em] uppercase text-[#6B7280]">Scroll</span>
-        <div className="scroll-line" />
-      </div>
     </section>
   );
 }
