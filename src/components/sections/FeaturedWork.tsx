@@ -1,3 +1,4 @@
+import { SecondaryButton } from "../ui/Button";
 const FEATURED_PROJECTS = [
   {
     id: 'arjun-priya',
@@ -37,9 +38,7 @@ export function FeaturedWork() {
           <h2 className="font-display text-[clamp(36px,5vw,60px)] font-light leading-[1.05] tracking-[-0.02em] text-[#F7F5F2]">
             Where stories<br />find their form.
           </h2>
-          <button className="btn-secondary flex items-center gap-2.5 bg-transparent border border-white/[0.06] text-[#F7F5F2] font-body text-[11px] tracking-[0.14em] uppercase px-9 py-4 hover-target flex-shrink-0">
-            View All Projects
-          </button>
+          <SecondaryButton>View All Projects</SecondaryButton>
         </div>
 
         {/* Asymmetric Grid */}

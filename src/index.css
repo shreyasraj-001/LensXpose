@@ -13,6 +13,10 @@
   --ivory: #F7F5F2;
   --mist: #6B7280;
   --white: #FFFFFF;
+  --g:#0f0f0f;
+  --g2:#171717;
+  --gold2:#c8942f;
+  --mist2:#4a5568;
 
   --gold-soft: rgba(217, 164, 65, 0.12);
   --gold-border: rgba(217, 164, 65, 0.25);
@@ -93,12 +97,18 @@ html, body {
 
 /* ─── PREMIUM BACKGROUND ─── */
 .premium-bg {
-  background-color: var(--noir);
-  background-image:
-    radial-gradient(at 0% 0%, rgba(20, 20, 25, 0.4) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(18, 18, 22, 0.35) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(15, 15, 18, 0.5) 0px, transparent 50%);
-  background-size: 100% 100%;
+  /* A deep, rich dark palette (Midnight/Noir) */
+  /* background: linear-gradient(135deg, var(--noir) 0%, var(--g) 30%, var(--g2) 50%, var(--graphite) 70%, var(--noir) 100%); */
+  /* The lightest, smoothest transition possible,Stretches the background so we have room to move it */
+ /* background-size: 200% 200%; */
+ animation: premiumDrift 18s ease-in-out infinite;
+}
+
+Hardware-friendly, buttery smooth animation
+@keyframes premiumDrift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 /* ─── GRID OVERLAY TEXTURE ─── */
@@ -355,18 +365,31 @@ html, body {
 .hero-section {
   position: relative;
   min-height: 100vh;
+  /* min-height: 100dvh; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .hero-section {
+    justify-content: center; 
+    min-height: 85vh;
+  }
+}
+
 .hero-bg-layer {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 60% 30%, rgba(217, 164, 65, 0.035) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 20% 70%, rgba(18, 18, 22, 0.8) 0%, transparent 70%),
-    linear-gradient(160deg, #0A0A0A 0%, #050505 50%, #080810 100%);
+    /* radial-gradient(ellipse 80% 60% at 60% 30%, rgba(217, 164, 65, 0.035) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 70%, rgba(18, 18, 22, 0.8) 0%, transparent 70%), */
+    linear-gradient(160deg, 
+    #050505 0%, 
+    #090808 40%, 
+    #050506 70%, 
+    #060606 100%)
 }
 
 /* Film strip sidebar */
@@ -577,4 +600,14 @@ html, body {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
 }
