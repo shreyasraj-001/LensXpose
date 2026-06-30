@@ -1,11 +1,11 @@
-import { PrimaryButton } from '../ui/Button';
+import { PrimaryButton, SecondaryButton } from '../ui/Button';
 
 export function Hero() {
   return (
     <section className="hero-section" id="hero-section">
       {/* Background Layers */}
       <div className="hero-bg-layer" />
-      <div className="absolute inset-0 grid-overlay opacity-60" />
+      <div className="absolute inset-0 grid-overlay opacity-90" />
       {/* <div className="film-grain" /> */}
 
       {/* Film Strip — Right Side */}
@@ -28,7 +28,7 @@ export function Hero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 px-6 md:px-12 pb-20 max-w-[700px]">
+      <div className="relative z-10 px-10 sm:px-10 md:px-16 lg:px-20 pb-20 sm:pb-16 md:pb-20  max-w-[700px]">
         {/* Eyebrow */}
         <div className="flex items-center gap-3 mb-7">
           <div className="w-[6px] h-[6px] bg-[#D9A441] rounded-full" />
@@ -56,12 +56,7 @@ export function Hero() {
         {/* Actions */}
         <div className="flex items-center gap-6 flex-wrap">
           <PrimaryButton>Explore Our Work</PrimaryButton>
-          <button className="btn-secondary flex items-center gap-2.5 bg-transparent border border-white/[0.06] text-[#F7F5F2] font-body text-[11px] tracking-[0.14em] uppercase px-9 py-4 hover-target">
-            <span className="w-[18px] h-[18px] border border-current rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="w-0 h-0 border-l-[6px] border-l-current border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5" />
-            </span>
-            Watch Showreel
-          </button>
+          <SecondaryButton>Watch Showreel</SecondaryButton>
         </div>
       </div>
 
