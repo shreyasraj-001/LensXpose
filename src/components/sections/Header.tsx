@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { SecondaryButton } from '../ui/Button';
 
 const NAV_LINKS = [
   { label: 'Work', href: '#work' },
@@ -14,7 +15,7 @@ export function Header() {
 
   return (
     <nav className="nav-sticky" id="nav-header">
-      <div className="flex items-center justify-between px-6 md:px-12 py-5 max-w-[1400px] mx-auto">
+      <div className=" nav-container">
         {/* Logo */}
         <a href="#" className="font-display text-[26px] font-light tracking-[-0.04em] text-[#F7F5F2] hover-target">
           LensXpose<span className="text-[#D9A441]">.</span>
@@ -26,7 +27,7 @@ export function Header() {
             <li key={link.label}>
               <a
                 href={link.href}
-                className="font-body text-[11px] tracking-[0.18em] uppercase text-[#6B7280] no-underline hover:text-[#F7F5F2] transition-colors duration-300 hover-target"
+                className="font-body text-[11px] tracking-[0.18em] uppercase text-gray-300 no-underline hover:text-[#F7F5F2] transition-colors duration-300 hover-target"
               >
                 {link.label}
               </a>
@@ -35,9 +36,9 @@ export function Header() {
         </ul>
 
         {/* CTA */}
-        <button className="hidden md:block btn-secondary bg-transparent border border-[#D9A441] text-[#D9A441] font-body text-[11px] tracking-[0.14em] uppercase px-6 py-2.5 hover-target">
+        <SecondaryButton className="hidden md:block bg-transparent border border-[#D9A441] text-[#D9A441] f tracking-[0.14em] uppercase rounded-[4px] hover-target">
           Start a Project
-        </button>
+        </SecondaryButton>
 
         {/* Mobile Toggle */}
         <button

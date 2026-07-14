@@ -46,11 +46,11 @@ export function ClientSegments() {
         </div>
 
         {/* Segment Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[12px] ">
           {SEGMENTS.map((seg, i) => (
-            <div key={seg.label} className="segment-card hover-target">
+            <div key={seg.label} className="segment-card border border-gray-700 rounded-[8px] hover-target">
               {/* Icon */}
-              <div className="w-12 h-12 border border-[#D9A441]/25 flex items-center justify-center mb-7 text-xl">
+              <div className="w-12 h-12 border border-white/[0.12] flex items-center justify-center mb-7 text-xl">
                 {seg.icon}
               </div>
 

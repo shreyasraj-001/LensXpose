@@ -17,7 +17,7 @@ export function TrustedLogos() {
             {CLIENTS.map((name, idx) => (
               <span
                 key={idx}
-                className="mx-8 font-display text-[14px] font-light text-[#6B7280]/70 tracking-[0.04em] hover:text-[#6B7280]/90 transition-colors duration-300 cursor-default select-none"
+                className="mx-8 font-display text-[18px] font-light text-gray-400 tracking-[0.04em] hover:text-gray-300 transition-colors duration-300 cursor-default select-none"
               >
                 {name}
               </span>
@@ -26,7 +26,7 @@ export function TrustedLogos() {
             {CLIENTS.map((name, idx) => (
               <span
                 key={`dup-${idx}`}
-                className="mx-8 font-display text-[18px] font-light text-[#6B7280]/70 tracking-[0.04em] hover:text-[#6B7280]/90 transition-colors duration-300 cursor-default select-none"
+                className="mx-8 font-display text-[18px] font-light text-gray-400 tracking-[0.04em] hover:text-gray-300 transition-colors duration-300 cursor-default select-none"
               >
                 {name}
               </span>

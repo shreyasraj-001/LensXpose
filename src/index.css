@@ -34,6 +34,7 @@
   
 
 html, body {
+  display: flex;
   background-color: var(--noir);
   color: var(--ivory);
   overflow-x: hidden;
@@ -58,15 +59,33 @@ html, body {
 }
 
 /* ─── CUSTOM SCROLLBAR ─── */
+
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;          /* fixed so it follows viewport */
+  top: 80px;   
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  z-index: -100;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: var(--noir);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--graphite);
+  background: var(--gold);
   border-radius: 10px;
   border: 2px solid var(--noir);
 }
@@ -260,6 +279,7 @@ html, body {
 /* Primary — Gold fill with oblique shimmer sweep */
 .btn-primary {
   position: relative;
+  cursor: pointer;
   overflow: hidden;
   transition: transform 0.2s var(--ease-luxury), box-shadow 0.2s ease;
   border-radius: 4px;
@@ -291,32 +311,32 @@ html, body {
 .btn-secondary {
   position: relative;
   overflow: hidden;
+  color: var(--gold) !important;
   z-index: 1;
-  transition: color 0.4s var(--ease-luxury), border-color 0.4s ease;
+  transition: transform 0.2s var(--ease-luxury), box-shadow 0.2s ease;
   border: 1px solid rgba(255,255,255,0.25); /* subtle base border */
   backdrop-filter: none;
   border-radius: 4px;
 }
-.btn-secondary::before {
+.btn-secondary::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  left: -150%;
   width: 100%;
-  height: 0%;
-  /* background-color: var(--gold); */
-  z-index: -1;
-  transition: height 0.4s var(--ease-luxury);
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
 }
 .btn-secondary:hover {
-  /* color: var(--noir) !important; */
   border-color: rgba(255,255,255,0.4) !important;
   background: #292929; /* translucent glass layer */
-  /* backdrop-filter: blur(8px);  */
+  transform: translateY(-2px) scale(1.03);
   box-shadow: inset 0 0 12px rgba(255,255,255,0.25), 0 0 8px rgba(255,255,255,0.1); 
 }
-.btn-secondary:hover::before {
-  height: 100%;
+.btn-secondary:hover::after {
+  left: 150%;
 }
 .btn-secondary:active {
   transform: scale(0.97) !important;
@@ -357,13 +377,36 @@ html, body {
    NAVIGATION
    ═══════════════════════════════════════════════════════════════ */
 .nav-sticky {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
-  background: rgba(5, 5, 5, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.08); /* translucent layer */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--white-border);
+}
+
+.nav-container {
+  display: flex;                /* flex layout */
+  align-items: center;          /* vertically center items */
+  justify-content: space-between; /* space between left and right */
+  padding-left: 1.5rem;         /* px-6 */
+  padding-right: 1.5rem;
+  padding-top: 1rem;         /* py-5 */
+  padding-bottom: 1rem;
+  max-width: 1400px;            /* max-w-[1400px] */
+  margin-left: auto;            /* mx-auto */
+  margin-right: auto;
+}
+
+/* Responsive adjustment for medium screens and above */
+@media (min-width: 768px) {
+  .nav-container {
+    padding-left: 3rem;         /* md:px-12 */
+    padding-right: 3rem;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -426,20 +469,6 @@ html, body {
 .film-cell:nth-child(1) { background: linear-gradient(135deg, #1a1208 0%, #0d0d0d 100%); }
 .film-cell:nth-child(2) { background: linear-gradient(135deg, #0d1219 0%, #080808 100%); }
 .film-cell:nth-child(3) { background: linear-gradient(135deg, #12100d 0%, #0a0a0a 100%); }
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-}
 
 /* ═══════════════════════════════════════════════════════════════
    WORK GRID
