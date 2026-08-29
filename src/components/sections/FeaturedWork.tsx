@@ -1,23 +1,30 @@
 import { SecondaryButton } from "../ui/Button";
+import blrImage from "../../../assests/photos/BLR-2.webp";
+import CorporateBrandFilm from "../../../assests/photos/DSC07641.webp";
+import Nightlife from "../../../assests/photos/DSC04011.webp";
+// BLR-2.webp
 const FEATURED_PROJECTS = [
   {
     id: 'arjun-priya',
-    tag: 'Wedding · Cinematic Film',
-    title: 'Arjun & Priya — A Love Preserved in Light',
+    tag: 'Cinematic Candid Shoot',
+    // title: 'Arjun & Priya — A Love Preserved in Light',
+    image: blrImage,
     gradient: 'linear-gradient(145deg, #1a1208 0%, #0d0806 50%, #050505 100%)',
     span: true,
   },
   {
     id: 'novatech',
-    tag: 'Corporate · Brand Film',
-    title: 'Novatech — Redefining the Brand Voice',
+    tag: 'Brand Shoot',
+    // title: 'Novatech — Redefining the Brand Voice',
+    image: CorporateBrandFilm,
     gradient: 'linear-gradient(145deg, #0d1219 0%, #080d12 50%, #050505 100%)',
     span: false,
   },
   {
     id: 'riya-kapoor',
-    tag: 'Creator · Personal Brand',
-    title: 'Riya Kapoor — Content That Commands Attention',
+    tag: 'Nightlife Shoot',
+    // title: 'Riya Kapoor — Content That Commands Attention',
+    image: Nightlife,
     gradient: 'linear-gradient(145deg, #12100d 0%, #0a0a08 50%, #050505 100%)',
     span: false,
   },
@@ -48,8 +55,8 @@ export function FeaturedWork() {
               key={project.id}
               className={`work-card hover-target ${project.span ? 'md:row-span-2 min-h-[400px] md:min-h-[640px]' : 'min-h-[280px] md:min-h-[316px]'}`}
             >
-              <div className="work-card-bg" style={{ background: project.gradient }} />
-              <div className="film-grain" />
+              <div className="work-card-bg" style={{ backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center', }} />
+              <div className="film-grain" style={{ backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center', }} />
               <div className="work-card-overlay" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
                 <span className="font-body text-[9px] tracking-[0.22em] uppercase text-[#D9A441] block mb-2.5">
