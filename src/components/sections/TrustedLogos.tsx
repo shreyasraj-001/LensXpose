@@ -1,10 +1,16 @@
 const CLIENTS = [
-  'Novatech',
-  'Celestia Hotels',
-  'Meridian Brands',
-  'Apex Studios',
-  'Veritas Corp',
-  'Luminary'
+  "Bastian Garden City",
+  "One8 Commune",
+  "Cavore",
+  "Sunburn Union",
+  "Oia",
+  "Kai",
+  "Taj",
+  "Mirage",
+  "Pangeo",
+  "Biergarten",
+  "Social",
+  "Kaze",
 ];
 
 export function TrustedLogos() {
@@ -17,18 +23,21 @@ export function TrustedLogos() {
             {CLIENTS.map((name, idx) => (
               <span
                 key={idx}
-                className="mx-8 font-display text-[18px] font-light text-gray-400 tracking-[0.04em] hover:text-gray-300 transition-colors duration-300 cursor-default select-none"
+                className="group/client relative mx-8 font-display text-[18px] font-light text-gray-400 tracking-[0.04em] cursor-default select-none transition-colors duration-300 hover:text-yellow-400"
               >
                 {name}
+                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover/client:w-full" />
               </span>
             ))}
+
             {/* Duplicate for seamless loop */}
             {CLIENTS.map((name, idx) => (
               <span
                 key={`dup-${idx}`}
-                className="mx-8 font-display text-[18px] font-light text-gray-400 tracking-[0.04em] hover:text-gray-300 transition-colors duration-300 cursor-default select-none"
+                className="group/client relative mx-8 font-display text-[18px] font-light text-gray-400 tracking-[0.04em] cursor-default select-none transition-colors duration-300 hover:text-yellow-400"
               >
                 {name}
+                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover/client:w-full" />
               </span>
             ))}
           </div>
