@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { PrimaryButton, SecondaryButton } from "../ui/Button";
 
 export function Hero() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -13,7 +13,7 @@ export function Hero() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 30,
@@ -23,7 +23,7 @@ export function Hero() {
       y: 0,
       transition: {
         duration: 0.9,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -42,7 +42,7 @@ export function Hero() {
         animate={{ scale: 1, opacity: 0.22 }}
         transition={{
           duration: 2,
-          ease: [0.16, 1, 0.3, 1],
+          ease: [0.16, 1, 0.3, 1] as const,
         }}
         className="
           absolute inset-0
