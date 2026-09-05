@@ -63,7 +63,7 @@ export function FeaturedWork() {
                   {project.tag}
                 </span>
                 <div className="font-display text-[clamp(20px,2.5vw,30px)] font-light text-[#F7F5F2] leading-[1.2]">
-                  {project.title}
+                  {/* {project.title} */}
                 </div>
                 <div className="work-view font-body text-[10px] tracking-[0.18em] uppercase text-[#6B7280] mt-4 flex items-center gap-2 hover:text-[#D9A441] transition-colors">
                   View Project <span>→</span>
