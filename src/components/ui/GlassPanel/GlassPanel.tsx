@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
 
+// Defined outside the component as a immutable 4-element tuple
+const LUXURY_EASE = [0.16, 1, 0.3, 1] as const;
+
 // We extend HTMLMotionProps instead of standard HTMLAttributes 
 // so this component can natively accept Framer Motion props like 'initial', 'animate', etc.
 export interface GlassPanelProps extends HTMLMotionProps<"div"> {
@@ -34,13 +37,13 @@ export function GlassPanel({
       animate={{ opacity: 1, y: 0 }}
       transition={{ 
         duration: 0.8, 
-        ease: luxuryEase 
+        ease: LUXURY_EASE 
       }}
       
       // 2. Interactive Kinematics: Optional luxury float on hover
       whileHover={withHoverLift ? { 
         y: -6,
-        transition: { duration: 0.4, ease: luxuryEase }
+        transition: { duration: 0.4, ease: LUXURY_EASE }
       } : undefined}
       
       // Spreads remaining props (including onClick handlers or custom motion overrides)
